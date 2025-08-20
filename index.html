@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equalizer Symmetry Loader</title>
+    <style>
+      body {
+        height: 100vh; /* Chiều cao toàn màn hình */
+        display: flex; /* Dùng Flexbox */
+        justify-content: center; /* Căn giữa ngang */
+        align-items: center; /* Căn giữa dọc */
+        background: #0d1b2a; /* Nền xanh đậm */
+      }
+
+      .equalizer {
+        display: flex; /* Xếp ngang các thanh */
+        gap: 12px; /* Khoảng cách giữa các thanh */
+      }
+
+      .bar {
+        width: 16px; /* Độ rộng mỗi thanh */
+        height: 60px; /* Chiều cao cơ bản (trạng thái giữa) */
+        border-radius: 20px; /* Bo góc trên dưới */
+        transform-origin: center; /* Phình đều trên và dưới */
+        animation: pulse 1s ease-in-out infinite;
+        /* pulse: tên animation
+         1s: thời gian 1 chu kỳ
+         ease-in-out: mượt mà
+         infinite: lặp vô hạn */
+      }
+
+      /* Màu + hiệu ứng delay để tạo sóng từ ngoài vào giữa */
+      .bar:nth-child(1) {
+        background: #ff6a00; /* Cam */
+        animation-delay: 0s;
+      }
+      .bar:nth-child(2) {
+        background: #ffcc00; /* Vàng */
+        animation-delay: 0.1s;
+      }
+      .bar:nth-child(3) {
+        background: #99ff00; /* Xanh lá */
+        animation-delay: 0.2s;
+      }
+      .bar:nth-child(4) {
+        background: #00e6e6; /* Xanh ngọc */
+        animation-delay: 0.3s;
+      }
+      .bar:nth-child(5) {
+        background: #99ff00; /* Xanh lá (đối xứng) */
+        animation-delay: 0.2s; /* Delay bằng với thanh 3 */
+      }
+      .bar:nth-child(6) {
+        background: #ffcc00; /* Vàng (đối xứng) */
+        animation-delay: 0.1s;
+      }
+      .bar:nth-child(7) {
+        background: #ff6a00; /* Cam (đối xứng) */
+        animation-delay: 0s;
+      }
+
+      /* Keyframes: phình to từ giữa */
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scaleY(0.3); /* Nhỏ nhất: 30% chiều cao */
+          opacity: 0.5; /* Hơi mờ */
+        }
+        50% {
+          transform: scaleY(1.4); /* Lớn nhất: 140% chiều cao */
+          opacity: 1; /* Hiển thị rõ */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="equalizer">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </body>
+</html>
